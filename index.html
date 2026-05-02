@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERPULSE | Elite Gaming Hub</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50">
+        <div class="flex justify-between items-center px-8 h-full max-w-1440">
+            <div class="flex items-center gap-12">
+                <span class="text-logo font-display cursor-pointer" id="nav-logo">CYBERPULSE</span>
+                <div class="nav-links flex gap-8">
+                    <button data-page="home" class="nav-link active">Home</button>
+                    <button data-page="library" class="nav-link">Library</button>
+                    <button data-page="store" class="nav-link">Store</button>
+                    <button data-page="dashboard" class="nav-link">Dashboard</button>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex gap-4">
+                    <button class="icon-btn relative" id="theme-toggle-btn" title="Toggle Theme">
+                        <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+                    </button>
+                    <button class="icon-btn relative" id="cart-btn">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        <span id="cart-count" class="badge hidden">0</span>
+                    </button>
+                </div>
+                <div id="auth-buttons">
+                    <button id="login-nav-btn" class="btn-primary-small">
+                        LOGIN
+                    </button>
+                </div>
+                <div id="user-profile" class="hidden flex items-center gap-4">
+                    <span id="user-display-name" class="user-name"></span>
+                    <button id="logout-btn" class="logout-link">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- PAGE: HOME -->
+    <main id="page-home" class="page-content pt-20">
+        <!-- HERO SECTION -->
+        <section class="hero relative">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop"
+                    class="hero-bg" alt="Cyber Hub Background">
+                <div class="absolute inset-0 gradient-overlay-v"></div>
+                <div class="absolute inset-0 gradient-overlay-h"></div>
+            </div>
+            <div class="relative z-10 max-w-1440 px-8 w-full">
+                <div class="hero-content">
+                    <span class="sub-heading">PREMIER GAMING GRID</span>
+                    <h1>EVOLVE YOUR <br /><span class="text-primary">DIGITAL LIBRARY.</span></h1>
+                    <p class="hero-desc">CyberPulse is more than a store—it's a curated ecosystem for elite gaming
+                        enthusiasts. Access cutting-edge titles, manage your personal archive, and immerse yourself in
+                        the next generation of entertainment.</p>
+                    <div class="flex gap-4">
+                        <button onclick="showPage('store')" class="btn-primary">EXPLORE ASSETS</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FEATURES SECTION -->
+        <section class="py-20 bg-surface-lowest">
+            <div class="max-w-1440 px-8">
+                <div class="grid grid-cols-3 gap-12">
+                    <div class="feature-card">
+                        <span class="material-symbols-outlined text-primary"
+                            style="font-size: 3rem;">rocket_launch</span>
+                        <h3 class="font-display mt-4 mb-2 text-white">INSTANT SYNC</h3>
+                        <p class="text-sm opacity-60">Acquire and initialize assets with zero latency. Your library is
+                            always synced across the grid.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-symbols-outlined text-secondary"
+                            style="font-size: 3rem;">verified_user</span>
+                        <h3 class="font-display mt-4 mb-2 text-white">SECURE VAULT</h3>
+                        <p class="text-sm opacity-60">Military-grade protection for your digital credentials and owned
+                            assets in your private archive.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-symbols-outlined text-tertiary"
+                            style="font-size: 3rem;">auto_awesome</span>
+                        <h3 class="font-display mt-4 mb-2 text-white">ELITE SELECTION</h3>
+                        <p class="text-sm opacity-60">Hand-picked experiences ranging from high-octane simulators to
+                            deep, narrative-driven RPGs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TRENDING SECTION -->
+        <section class="py-20 max-w-1440 px-8">
+            <div class="section-header">
+                <h2>TRENDING NOW</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="grid grid-cols-5 gap-6" id="trending-grid">
+                <!-- Data populated via JS -->
+            </div>
+        </section>
+    </main>
+    <!-- PAGE: STORE -->
+    <main id="page-store" class="page-content pt-32 hidden">
+        <div class="max-w-1440 px-8">
+            <div class="page-header">
+                <h2 class="display-title">THE <span class="text-primary">MARKETPLACE</span></h2>
+                <p class="page-sub">Equip your arsenal with the latest tech.</p>
+            </div>
+            <div class="grid store-grid gap-8" id="store-grid">
+                <!-- Data populated via JS -->
+            </div>
+        </div>
+    </main>
+    <!-- PAGE: LIBRARY -->
+    <main id="page-library" class="page-content pt-32 hidden">
+        <div class="max-w-1440 px-8">
+            <div class="page-header">
+                <h2 class="display-title">YOUR <span class="text-secondary">ARCHIVE</span></h2>
+                <p class="page-sub">Total access to your acquired assets.</p>
+            </div>
+            <div class="grid library-grid gap-6" id="library-grid">
+                <!-- Owned games go here -->
+            </div>
+            <div id="library-empty" class="empty-state hidden">
+                <span class="material-symbols-outlined large-icon">inventory_2</span>
+                <p>Your archive is currently offline. Purchase assets in the store to populate.</p>
+            </div>
+        </div>
+    </main>
+    <!-- PAGE: DASHBOARD -->
+    <main id="page-dashboard" class="page-content pt-32 hidden">
+        <div class="max-w-1440 px-8">
+            <div class="grid grid-cols-dashboard gap-8">
+                <div class="sidebar">
+                    <div class="glass-card profile-card">
+                        <div class="avatar">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <h3 id="dash-username">NEON_EXPLORER</h3>
+                        <p class="rank">RANK: ELITE I</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="label">GAMES OWNED</span>
+                                <span id="dash-game-count" class="val">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">PLAY TIME</span>
+                                <span class="val">128.5H</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">CREDITS</span>
+                                <span class="val text-primary">15,400 CP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-dash">
+                    <div class="glass-card activity-card">
+                        <h3 class="section-title">
+                            <span class="material-symbols-outlined text-secondary">bolt</span> RECENT ACTIVITY
+                        </h3>
+                        <div class="activity-list" id="recent-activity-list">
+                            <div class="activity-item">
+                                <div class="act-icon">
+                                    <span class="material-symbols-outlined">login</span>
+                                </div>
+                                <div class="act-info">
+                                    <p class="act-title">Protocol Sync</p>
+                                    <p class="act-desc">System access authorized at Grid Entry 7.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MODAL: AUTH -->
+    <div id="auth-modal" class="modal fixed inset-0 z-100 flex items-center justify-center hidden">
+        <div class="glass-card auth-container relative">
+            <button id="close-auth-modal" class="close-btn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="auth-feedback" class="auth-feedback hidden"></div>
+            <div id="login-form">
+                <h2 class="modal-title">LOGIN</h2>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-email" class="input-field" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" class="input-field" placeholder="••••••••">
+                </div>
+                <div class="flex flex-col gap-3">
+                    <button id="do-login-btn" class="btn-primary full-width">Login</button>
+                    <button class="btn-secondary full-width exit-auth-btn">Exit</button>
+                </div>
+                <p class="form-footer">New account? <button id="switch-to-register" class="link-btn">Create
+                        account</button></p>
+            </div>
+            <div id="register-form" class="hidden">
+                <h2 class="modal-title secondary">REGISTER</h2>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="reg-username" class="input-field" placeholder="Choose Username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" class="input-field" placeholder="Create Password">
+                </div>
+                <div class="flex flex-col gap-3">
+                    <button id="do-register-btn" class="btn-primary full-width">Register</button>
+                    <button class="btn-secondary full-width exit-auth-btn">Exit</button>
+                </div>
+                <p class="form-footer">Already have an account? <button id="switch-to-login"
+                        class="link-btn">Login</button></p>
+            </div>
+        </div>
+    </div>
+    <!-- CART SLIDE OVER -->
+    <div id="cart-drawer" class="drawer fixed inset-0 z-110 hidden">
+        <div class="drawer-overlay" id="close-cart-overlay"></div>
+        <div class="drawer-content px-8 py-12 flex flex-col">
+            <div class="drawer-header flex justify-between items-center">
+                <h2 class="drawer-title">LOADOUT <span class="text-primary">CART</span></h2>
+                <button id="close-cart-btn" class="close-btn"><span
+                        class="material-symbols-outlined">close</span></button>
+            </div>
+            <div id="cart-items" class="cart-items flex-grow custom-scrollbar">
+                <!-- Cart items here -->
+            </div>
+            <div class="drawer-footer">
+                <div class="total-row flex justify-between items-center">
+                    <span class="label">TOTAL INVESTMENT</span>
+                    <span id="cart-total" class="total-val">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn-primary full-width">
+                    PURCHASE
+                </button>
+                <div id="checkout-success" class="success-msg hidden">
+                    TRANSACTION AUTHORIZED. ASSETS RELOCATED TO ARCHIVE.
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center px-8 gap-8 max-w-1440">
+            <div class="footer-brand flex flex-col gap-2">
+                <span class="text-logo">CYBERPULSE</span>
+                <p class="tagline">Leading the next generation of digital entertainment through immersion and
+                    innovation.</p>
+            </div>
+            <div class="footer-links flex gap-8">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Careers</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="copyright">© 2026 CYBERPULSE INTERACTIVE.</div>
+        </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

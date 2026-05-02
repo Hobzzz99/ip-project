@@ -315,18 +315,90 @@ a {
   gap: 2rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
+  .grid-cols-5, .library-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-  .grid-cols-3,
-  .grid-cols-5,
-  .store-grid,
-  .library-grid {
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-cols-5, .library-grid, .store-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-3, .grid-cols-5, .library-grid, .store-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .grid-cols-dashboard {
     grid-template-columns: 1fr;
   }
+  
+  .px-8 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .py-20 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero {
+    height: auto !important;
+    min-height: 80vh;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+  }
+
+  .display-title {
+    font-size: 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-cols-3, .grid-cols-5, .library-grid, .store-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links.mobile-active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    background: var(--color-surface);
+    padding: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 1.5rem;
+    z-index: 100;
+  }
+
+  .lg\:hidden {
+    display: block !important;
+  }
+
+  .lg\:flex {
+    display: none !important;
+  }
+}
+
+.lg\:flex {
+  display: flex;
+}
+
+.lg\:hidden {
+  display: none;
 }
 
 /* Feature Cards */

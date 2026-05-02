@@ -17,23 +17,26 @@
     <!-- NAVIGATION -->
     <nav class="fixed w-full z-50">
         <div class="flex justify-between items-center px-8 h-full max-w-1440">
-            <div class="flex items-center gap-12">
+            <div class="flex items-center gap-4 lg:gap-12">
                 <span class="text-logo font-display cursor-pointer" id="nav-logo">CYBERPULSE</span>
-                <div class="nav-links flex gap-8">
+                <div class="nav-links hidden lg:flex gap-8" id="nav-links-container">
                     <button data-page="home" class="nav-link active">Home</button>
                     <button data-page="library" class="nav-link">Library</button>
                     <button data-page="store" class="nav-link">Store</button>
                     <button data-page="dashboard" class="nav-link">Dashboard</button>
                 </div>
             </div>
-            <div class="flex items-center gap-6">
-                <div class="flex gap-4">
+            <div class="flex items-center gap-2 md:gap-6">
+                <div class="flex gap-2 md:gap-4">
                     <button class="icon-btn relative" id="theme-toggle-btn" title="Toggle Theme">
                         <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
                     </button>
                     <button class="icon-btn relative" id="cart-btn">
                         <span class="material-symbols-outlined">shopping_cart</span>
                         <span id="cart-count" class="badge hidden">0</span>
+                    </button>
+                    <button class="icon-btn lg:hidden" id="mobile-menu-btn">
+                        <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
                 <div id="auth-buttons">

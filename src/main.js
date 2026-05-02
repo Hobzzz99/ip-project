@@ -355,10 +355,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Nav events
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => showPage(link.dataset.page));
+        link.addEventListener('click', () => {
+            showPage(link.dataset.page);
+            // Close mobile menu on click
+            const navContainer = $('nav-links-container');
+            if (navContainer) navContainer.classList.remove('mobile-active');
+        });
     });
 
-    $('nav-logo').addEventListener('click', () => showPage('home'));
+    const mobileMenuBtn = $('mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const navContainer = $('nav-links-container');
+            if (navContainer) navContainer.classList.toggle('mobile-active');
+        });
+    }
+
+    $('nav-logo').addEventListener('click', () => {
+        showPage('home');
+        const navContainer = $('nav-links-container');
+        if (navContainer) navContainer.classList.remove('mobile-active');
+    });
 
     // Cart events
     const closeCart = () => $('cart-drawer').classList.add('hidden');
